@@ -67,6 +67,8 @@ class RadioSkill(MycroftSkill):
             url = re.sub('https', 'http',
                          data['entries'][0]['links'][0]['href'])
             # if audio service module is available use it
+            #smlee
+            url = self.url_rss
             if self.audioservice:
                 self.audioservice.play(url, message.data['utterance'])
             else:  # othervice use normal mp3 playback
