@@ -27,9 +27,9 @@ except:
     AudioService = None
 
 
-class NewsSkill(MycroftSkill):
+class RadioSkill(MycroftSkill):
     def __init__(self):
-        super(NewsSkill, self).__init__(name="NewsSkill")
+        super(RadioSkill, self).__init__(name="RadioSkill")
         self.process = None
         self.audioservice = None
 
@@ -53,14 +53,14 @@ class NewsSkill(MycroftSkill):
 
         return url_rss
 
-    @intent_handler(IntentBuilder("").require("Play").require("News"))
+    @intent_handler(IntentBuilder("").require("Play").require("Radio"))
     def handle_intent(self, message):
         try:
             data = feedparser.parse(self.url_rss)
             # Stop anything already playing
             self.stop()
 
-            self.speak_dialog('news')
+            self.speak_dialog('radioshow')
             wait_while_speaking()
 
             # After the intro, start the news stream
@@ -85,4 +85,4 @@ class NewsSkill(MycroftSkill):
 
 
 def create_skill():
-    return NewsSkill()
+    return RadioSkill()
