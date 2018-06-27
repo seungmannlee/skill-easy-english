@@ -56,7 +56,7 @@ class RadioSkill(MycroftSkill):
     @intent_handler(IntentBuilder("").require("Play").require("Radio"))
     def handle_intent(self, message):
         try:
-            data = feedparser.parse(self.url_rss)
+            #smlee data = feedparser.parse(self.url_rss)
             # Stop anything already playing
             self.stop()
 
@@ -64,8 +64,8 @@ class RadioSkill(MycroftSkill):
             wait_while_speaking()
 
             # After the intro, start the news stream
-            url = re.sub('https', 'http',
-                         data['entries'][0]['links'][0]['href'])
+            #smlee url = re.sub('https', 'http',
+            #smlee             data['entries'][0]['links'][0]['href'])
             # if audio service module is available use it
             #smlee
             url = self.url_rss
